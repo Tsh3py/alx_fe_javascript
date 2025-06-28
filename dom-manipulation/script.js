@@ -1,7 +1,4 @@
-// Step 2.1: Initialize an array of quote objects.
-// This array will hold all our quotes, each with a 'text' and 'category' property.
-// It's initialized as empty and will be populated from Local Storage first.
-let quotes = []; // Changed to 'let' as we will modify this array when loading/importing.
+let quotes = []; 
 
 // --- NEW FUNCTION: saveQuotes() ---
 // Saves the current quotes array to Local Storage.
