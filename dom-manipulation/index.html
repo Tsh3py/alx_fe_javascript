@@ -13,27 +13,27 @@
         #quoteAdditionForm input { padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 5px; }
         #sessionStorageDisplay { margin-top: 20px; font-size: 14px; color: #555; }
         .controls { margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; }
-        .controls label, .controls input[type="file"] { margin-right: 10px; }
+        .controls label, .controls input[type="file"], .controls button { margin-right: 10px; margin-bottom: 10px; } /* Adjust margin for buttons/inputs */
         #categoryFilter { padding: 8px 12px; border: 1px solid #ccc; border-radius: 5px; margin-left: 10px; }
+        #syncStatus { margin-top: 15px; padding: 10px; border-radius: 5px; background-color: #e0f7fa; color: #00796b; display: none; } /* Hidden by default */
+        .sync-success { background-color: #d4edda; color: #155724; }
+        .sync-conflict { background-color: #fff3cd; color: #856404; }
+        .sync-error { background-color: #f8d7da; color: #721c24; }
     </style>
 </head>
 <body>
     <h1>Dynamic Quote Generator</h1>
-    <!-- This div will display the random quotes -->
     <div id="quoteDisplay"></div>
-    <!-- Button to show a new random quote -->
     <button id="newQuote">Show New Quote</button>
     
-    <!-- NEW: Category Filter Dropdown -->
     <div class="controls">
         <label for="categoryFilter">Filter by Category:</label>
         <select id="categoryFilter" onchange="filterQuotes()">
             <option value="all">All Categories</option>
-            <!-- Dynamically populated categories will go here -->
+            
         </select>
     </div>
 
-    <!-- Placeholder for the dynamic quote addition form -->
     <div id="addQuoteFormContainer">
         
     </div>
@@ -44,6 +44,12 @@
         <button id="exportQuotes">Export Quotes to JSON</button>
         <label for="importFile">Import Quotes from JSON:</label>
         <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+    </div>
+
+    <div class="controls">
+        <h2>Server Sync</h2>
+        <button id="syncNow">Sync Now</button>
+        <div id="syncStatus"></div>
     </div>
 
     <div id="sessionStorageDisplay"></div>
